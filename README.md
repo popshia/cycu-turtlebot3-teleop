@@ -147,7 +147,9 @@ a/d : increase/decrease angular velocity
 space key, s : force stop
 CTRL-C to quit
 ```
-## Topic Script
+## Scripts
+
+### Clone the repo
 
 1. In your vm, switch the directory to `catkin_ws/src`
 ```
@@ -155,24 +157,43 @@ $ cd ~/catkin_ws/src
 ```
 2. Clone the repository.
 ```
-$ git clone https://github.com/popshia/turtlebot3_teleop_new
+$ git clone https://github.com/popshia/ros_turtlebot3_teleop
 ```
 3. `cd` into the python file directory.
 ```
-$ cd turtlebot3_teleop_new/nodes
+$ cd ros_turtlebot3_teleop/nodes
 ```
-4. Look into the python file and call each function in main with your parameters.
+### Topic scripts
+
+1. Look into the topic script file and call each function in main with your parameters.
 ```
-$ nano turtlebot3_teleop_key
+$ nano turtlebot3_teleop_topic
 ```
-5. After saving the script file, `catkin_make` the script.
+2. After saving the script file, `catkin_make` the script.
 ```
 $ cd ~/catkin_ws
-$ catkin_make --only-pkg-with-deps turtlebot3_teleop_new
+$ catkin_make --only-pkg-with-deps ros_turtlebot3_teleop
 ```
-## Run the file
+3. `rosrun` the package and check the result of your script.
+```
+$ rosrun ros_turtlebot3_teleop turtlebot3_teleop_topic
+```
+### Service scripts
 
-1. `rosrun` the package we just make using `catkin make`.
+1. Go back to the script directory.
 ```
-$ rosrun turtlebot3_teleop_new turtlebot3_teleop_key
+$ cd ~/catkin_ws/src/ros_turtlebot3_teleop/nodes
+```
+2. Look into the service script file and call each function in main with your parameters.
+```
+$ nano turtlebot3_teleop_service
+```
+3. After saving the script file, `catkin_make` the script.
+```
+$ cd ~/catkin_ws
+$ catkin_make --only-pkg-with-deps ros_turtlebot3_teleop
+```
+4. `rosrun` the package and check the result of your script.
+```
+$ rosrun ros_turtlebot3_teleop turtlebot3_teleop_service
 ```
