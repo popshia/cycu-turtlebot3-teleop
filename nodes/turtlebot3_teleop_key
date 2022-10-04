@@ -30,6 +30,8 @@
 import rospy
 from geometry_msgs.msg import Twist
 
+import time
+
 BURGER_MAX_LIN_VEL = 0.22
 BURGER_MAX_ANG_VEL = 2.84
 
@@ -135,8 +137,10 @@ if __name__ == "__main__":
 
     try:
         while not rospy.is_shutdown():
-            teleop.Set_Linear_Velocity()
-            teleop.Set_Angular_Velocity()
+            # here are some examples
+            teleop.Set_Linear_Velocity(1.0)
+            # use sleep as a timer to maintain the speed
+            time.sleep(5)
             teleop.Reset_All_Velocity()
 
     except:
