@@ -14,7 +14,7 @@ $ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
   ros-melodic-compressed-image-transport ros-melodic-rqt* \
   ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers
 ```
-2. TurtleBot3 Packages
+2. TurtleBot3 packages
 ```
 $ sudo apt-get install ros-melodic-dynamixel-sdk
 $ sudo apt-get install ros-melodic-turtlebot3-msgs
@@ -22,11 +22,11 @@ $ sudo apt-get install ros-melodic-turtlebot3
 ```
 ## Configs
 
-1. Set TurtleBot3 Model Name
+1. Set TurtleBot3 model name
 ```
 $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 ```
-2. IP Settings ( Check your vm ip with `ifconfig` )
+2. IP settings ( check your vm ip with `ifconfig` )
 ```
 $ nano ~/.bashrc
 ```
@@ -50,7 +50,7 @@ $ source ~/.bashrc
 ```
 ssh pi@{IP_ADDRESS_OF_TURTLEBOT3}
 ```
-2. IP Settings ( Check TurtleBot3 ip with `ifconfig` )
+2. IP settings ( Check TurtleBot3 ip with `ifconfig` )
 ```
 $ nano ~/.bashrc
 ```
@@ -68,7 +68,7 @@ export ROS_HOSTNAME=${IP_ADDRESS_OF_TURTLEBOT3}
 ```
 $ source ~/.bashrc
 ```
-3. Run TurtleBot Basic Packages
+3. Run TurtleBot basic packages
 ```
 $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
@@ -125,6 +125,54 @@ $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
  [INFO] [1531306696.421749]: Start Calibration of Gyro
  [INFO] [1531306698.953226]: Calibration End
 ```
-## turtlebot3_teleop
+## turtlebot3_teleop_key
 
-1. 
+1. Run `roscore` in your vm.
+```
+$ roscore
+```
+2. Launch `turtlebot3_teleop_key`
+```
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+3. If the node is successfully launched, the following instruction will be appeared to the terminal window.
+```
+Control Your Turtlebot3
+Moving around
+     w
+ a   s   d
+     x
+w/x : increase/decrease linear velocity
+a/d : increase/decrease angular velocity
+space key, s : force stop
+CTRL-C to quit
+```
+## Topic Script
+
+1. In your vm, switch the directory to `catkin_ws/src`
+```
+$ cd ~/catkin_ws/src
+```
+2. Clone the repository.
+```
+$ git clone https://github.com/popshia/turtlebot3_teleop_new
+```
+3. `cd` into the python file directory.
+```
+$ cd turtlebot3_teleop_new/nodes
+```
+4. Look into the python file and call each function in main with your parameters.
+```
+$ nano turtlebot3_teleop_key
+```
+5. After saving the script file, `catkin_make` the script.
+```
+$ cd ~/catkin_ws
+$ catkin_make --only-pkg-with-deps turtlebot3_teleop_new
+```
+## Run the file
+
+1. `rosrun` the package we just make using `catkin make`.
+```
+$ rosrun turtlebot3_teleop_new turtlebot3_teleop_key
+```
