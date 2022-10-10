@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 # client side
 
+import argparse
 import sys
+import traceback
 
 import rospy
 
 from ros_turtlebot3_teleop.srv import Velocity, VelocityResponse
-
-e = """
-Communications Failed
-"""
 
 
 def Set_Velocities_Client(linear_velocity, angular_velocity):
@@ -18,25 +16,20 @@ def Set_Velocities_Client(linear_velocity, angular_velocity):
         set_velocities = rospy.ServiceProxy("set_velocities", Velocity)
         response = set_velocities(linear_velocity, angular_velocity)
         print(response)
-    except:
-        print(e)
-
-
-def usage():
-    return """
-    -- Turtlebot3_Teleop by CYCU-ICE --
-    --    Linear Velocity: +- 0.22   --
-    --   Angular Velocity: +- 2.84   --
-    """
+    except Exception:
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
-        linear_vel = float(sys.argv[1])
-        angular_vel = float(sys.argv[2])
-    else:
-        print(usage())
-        sys.exit(1)
+    # add arguments
+    parser = argparse.ArgumentParser(description="Turtlebot3_Teleop Client Script.")
+    parser.add_argument(
+        "--linear", type=float, required=True, help="Linear velocity: +-0.22"
+    )
+    parser.add_argument(
+        "--angular", type=float, required=True, help="Angular velocity: +-2.84"
+    )
+    arg = parser.parse_args()
 
-    print(f"Requesting (linear:{linear_vel}, angular:{angular_vel})")
-    Set_Velocities_Client(linear_vel, angular_vel)
+    print("Requesting (linear:{0}, angular:{1})".format(arg.linear, arg.angular))
+    Set_Velocities_Client(arg.linear, arg.angular)
