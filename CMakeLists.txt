@@ -52,9 +52,9 @@ catkin_package(
 # Install
 ################################################################################
 catkin_install_python(PROGRAMS
-  scrpits/topic.py
-  scrpits/server.py
-  scrpits/client.py
+  scripts/topic.py
+  scripts/server.py
+  scripts/client.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
