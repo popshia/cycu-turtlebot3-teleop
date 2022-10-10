@@ -25,12 +25,12 @@ def Set_Velocities_Client(linear_velocity, angular_velocity):
 def usage():
     return """
     -- Turtlebot3_Teleop by CYCU-ICE --
-    --    Linear Velocity: ± 0.22    --
-    --   Angular Velocity: ± 2.84    --
+    --    Linear Velocity: +- 0.22   --
+    --   Angular Velocity: +- 2.84   --
     """
 
 
-if __name__ == "__main":
+if __name__ == "__main__":
     if len(sys.argv) == 2:
         linear_vel = float(sys.argv[1])
         angular_vel = float(sys.argv[2])
@@ -38,5 +38,5 @@ if __name__ == "__main":
         print(usage())
         sys.exit(1)
 
-    print(f"Requesting Linear:{linear_vel}, Angular:{angular_vel}")
+    print(f"Requesting (linear:{linear_vel}, angular:{angular_vel})")
     Set_Velocities_Client(linear_vel, angular_vel)

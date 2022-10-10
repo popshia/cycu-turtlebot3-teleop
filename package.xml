@@ -19,5 +19,5 @@
   <exec_depend>message_runtime</exec_depend>
   <depend>rospy</depend>
   <depend>geometry_msgs</depend>
-  <depend>std_srvs</depend>
+  <depend>std_msgs</depend>
 </package>

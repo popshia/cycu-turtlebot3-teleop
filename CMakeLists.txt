@@ -9,7 +9,10 @@ project(turtlebot3_teleop)
 ################################################################################
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  roscpp
   geometry_msgs
+  std_msgs
+  message_generation
 )
 
 ################################################################################
@@ -20,6 +23,15 @@ catkin_python_setup()
 ################################################################################
 # Declare ROS messages, services and actions
 ################################################################################
+add_service_files(
+  FILES
+  Velocity.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################################################
 # Declare ROS dynamic reconfigure parameters
@@ -29,7 +41,7 @@ catkin_python_setup()
 # Declare catkin specific configuration to be passed to dependent projects
 ################################################################################
 catkin_package(
-  CATKIN_DEPENDS rospy geometry_msgs
+  CATKIN_DEPENDS rospy geometry_msgs message_runtime
 )
 
 ################################################################################
@@ -40,7 +52,9 @@ catkin_package(
 # Install
 ################################################################################
 catkin_install_python(PROGRAMS
-  nodes/turtlebot3_teleop_key
+  scrpits/turtlebot3_teleop_key.py
+  scrpits/turtlebot3_teleop_service_server.py
+  scrpits/turtlebot3_teleop_service_client.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

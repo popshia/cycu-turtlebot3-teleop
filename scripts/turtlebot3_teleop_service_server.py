@@ -17,10 +17,10 @@ class Server:
         rospy.init_node("set_velocities_server")
         self.srv = rospy.Service("set_velocities", Velocity, self.Set_Velocities)
         self.pub = rospy.Publisher("cmd_vel", Twist, queue_size=10)
-        print("Ready to set velocities (linear:±0.22, angular:±2.84):")
+        print("Ready to set velocities (linear:+-0.22, angular:+-2.84):")
         rospy.spin()
 
-    def MakeSimpleProfile(output, input, slop):
+    def MakeSimpleProfile(self, output, input, slop):
         if input > output:
             output = min(input, output + slop)
         elif input < output:
@@ -35,7 +35,9 @@ class Server:
         control_angular_vel = 0.0
 
         print(
-            f"Setting velocities to linear:{request.linear_velocity} angular:{request.angular_velocity}"
+            "Setting velocities (linear:{0} angular:{1})".format(
+                request.linear_velocity, request.angular_velocity
+            )
         )
 
         twist = Twist()
@@ -58,5 +60,5 @@ class Server:
         return VelocityResponse("Velocities Set.")
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     Server = Server()
