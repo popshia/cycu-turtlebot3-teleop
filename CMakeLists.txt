@@ -2,7 +2,7 @@
 # Set minimum required version of cmake, project name and compile options
 ################################################################################
 cmake_minimum_required(VERSION 3.0.2)
-project(turtlebot3_teleop)
+project(cycu_turtlebot3)
 
 ################################################################################
 # Find catkin packages and libraries for catkin and system dependencies
@@ -52,9 +52,9 @@ catkin_package(
 # Install
 ################################################################################
 catkin_install_python(PROGRAMS
-  scrpits/turtlebot3_teleop_key.py
-  scrpits/turtlebot3_teleop_service_server.py
-  scrpits/turtlebot3_teleop_service_client.py
+  scrpits/topic.py
+  scrpits/server.py
+  scrpits/client.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
