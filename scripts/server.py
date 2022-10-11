@@ -4,7 +4,7 @@
 import rospy
 from geometry_msgs.msg import Twist
 
-from ros_turtlebot3_teleop.srv import Velocity, VelocityResponse
+from cycu_turtlebot3.srv import Velocity, VelocityResponse
 
 BURGER_MAX_LIN_VEL = 0.22
 BURGER_MAX_ANG_VEL = 2.84
