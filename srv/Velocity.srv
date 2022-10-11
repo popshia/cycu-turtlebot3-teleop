@@ -1,8 +1,4 @@
-float linear_velocity
-float angular_velocity
-
-# request
+float32 linear_velocity
+float32 angular_velocity
 ---
-# response
-
 string result

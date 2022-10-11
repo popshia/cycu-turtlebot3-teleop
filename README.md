@@ -157,43 +157,51 @@ $ cd ~/catkin_ws/src
 ```
 2. Clone the repository.
 ```
-$ git clone https://github.com/popshia/ros_turtlebot3_teleop
+$ git clone https://github.com/popshia/cycu_turtlebot3
 ```
 3. `cd` into the python file directory.
 ```
-$ cd ros_turtlebot3_teleop/nodes
+$ cd cycu_turtlebot3/scripts
+```
+4. Make three scripts executable with `chmod`
+```
+$ chmod +x topic.py server.py client.py
 ```
 ### Topic scripts
 
 1. Look into the topic script file and call each function in main with your parameters.
 ```
-$ nano turtlebot3_teleop_topic
+$ nano topic.py
 ```
 2. After saving the script file, `catkin_make` the script.
 ```
 $ cd ~/catkin_ws
-$ catkin_make --only-pkg-with-deps ros_turtlebot3_teleop
+$ catkin_make
 ```
-3. `rosrun` the package and check the result of your script.
+3. `rosrun` the package with the script and check the result.
 ```
-$ rosrun ros_turtlebot3_teleop turtlebot3_teleop_topic
+$ rosrun cycu_turtlebot3 topic.py
 ```
 ### Service scripts
 
 1. Go back to the script directory.
 ```
-$ cd ~/catkin_ws/src/ros_turtlebot3_teleop/nodes
+$ cd ~/catkin_ws/src/cycu_turtlebot3/scripts
 ```
-2. Look into the service script file and call each function in main with your parameters.
+2. Look into the server and client script file and figure out how the scripts work.
 ```
-$ nano turtlebot3_teleop_service
+$ nano server.py
+$ nano client.py
 ```
 3. After saving the script file, `catkin_make` the script.
 ```
 $ cd ~/catkin_ws
-$ catkin_make --only-pkg-with-deps ros_turtlebot3_teleop
+$ catkin_make
 ```
-4. `rosrun` the package and check the result of your script.
+4. Open two terminal windows and `rosrun` the package with both scripts and check the result.
+
+> Check the usage of client.py first using `rosrun cycu_turtlebot3 client.py -h` 
 ```
-$ rosrun ros_turtlebot3_teleop turtlebot3_teleop_service
+$ rosrun cycu_turtlebot3 server.py
+$ rosrun cycu_turtlebot3 client.py
 ```
