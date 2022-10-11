@@ -1,5 +1,7 @@
 # 10/17 turtlebot3_teleop
 
+> Assume that you have already installed Ubuntu 18.04 and ROS_1_melodic. 
+
 ## Installations
 
 1. Dependencies
@@ -200,7 +202,7 @@ $ catkin_make
 ```
 4. Open two terminal windows and `rosrun` the package with both scripts and check the result.
 
-> Check the usage of client.py first using `rosrun cycu_turtlebot3 client.py -h` 
+> Check the usage of `client.py` first using `rosrun cycu_turtlebot3 client.py -h` 
 ```
 $ rosrun cycu_turtlebot3 server.py
 $ rosrun cycu_turtlebot3 client.py
