@@ -6,7 +6,6 @@ import sys
 import traceback
 
 import rospy
-
 from ros_turtlebot3_teleop.srv import Velocity, VelocityResponse
 
 
@@ -31,5 +30,8 @@ if __name__ == "__main__":
     )
     arg = parser.parse_args()
 
-    print("Requesting (linear:{0}, angular:{1})".format(arg.linear, arg.angular))
-    Set_Velocities_Client(arg.linear, arg.angular)
+    if -0.22 <= arg.linear <= 0.22 and -2.84 <= arg.angular <= 2.84:
+        print("Requesting (linear:{0}, angular:{1})".format(arg.linear, arg.angular))
+        Set_Velocities_Client(arg.linear, arg.angular)
+    else:
+        print("Wrong velocity values.")
