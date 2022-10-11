@@ -6,7 +6,8 @@ import sys
 import traceback
 
 import rospy
-from ros_turtlebot3_teleop.srv import Velocity, VelocityResponse
+
+from cycu_turtlebot3.srv import Velocity, VelocityResponse
 
 
 def Set_Velocities_Client(linear_velocity, angular_velocity):
