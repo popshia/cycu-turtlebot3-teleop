@@ -48,7 +48,7 @@ $ source ~/.bashrc
 ```
 ## TurtleBot3
 
-1. SSH to your TurtleBot3
+1. SSH to your TurtleBot3, the default password is `turtlebot`
 ```
 ssh pi@{IP_ADDRESS_OF_TURTLEBOT3}
 ```
@@ -62,7 +62,7 @@ $ nano ~/.bashrc
 ```
 export ROS_MASTER_URL=http://${IP_ADDRESS_OF_YOUR_VM}:11311
 ```
-> Modify the address of `HOSTNAME`
+> Modify the address of `HOSTNAME`, check out the corresponding ip of your TurtleBot in the txt file `TurtleBot3_IP.txt` in the repo
 ```
 export ROS_HOSTNAME=${IP_ADDRESS_OF_TURTLEBOT3}
 ```
