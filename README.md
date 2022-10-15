@@ -2,9 +2,9 @@
 
 > Assume that you have already installed Ubuntu 18.04 and ROS_1_melodic. 
 
-## Installations
+## Preparation
 
-1. Dependencies
+1. Install dependencies.
 ```
 $ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
   ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc \
@@ -16,7 +16,7 @@ $ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
   ros-melodic-compressed-image-transport ros-melodic-rqt* \
   ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers
 ```
-2. TurtleBot3 packages
+2. Install TurtleBot3 packages.
 ```
 $ sudo apt-get install ros-melodic-dynamixel-sdk
 $ sudo apt-get install ros-melodic-turtlebot3-msgs
@@ -24,11 +24,11 @@ $ sudo apt-get install ros-melodic-turtlebot3
 ```
 ## Configs
 
-1. Set TurtleBot3 model name
+1. Open a terminal in your vm and set TurtleBot3's model name.
 ```
 $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 ```
-2. IP settings ( check your vm ip with `ifconfig` )
+2. IP settings ( check your vm ip with `ifconfig` ).
 ```
 $ nano ~/.bashrc
 ```
@@ -48,11 +48,11 @@ $ source ~/.bashrc
 ```
 ## TurtleBot3
 
-1. SSH to your TurtleBot3, the default password is `turtlebot`
+1. Open another terminal and ssh to your TurtleBot3, the default password is `turtlebot`.
 ```
 ssh pi@{IP_ADDRESS_OF_TURTLEBOT3}
 ```
-2. IP settings ( Check TurtleBot3 ip with `ifconfig` )
+2. IP settings ( Check TurtleBot3 ip with `ifconfig` ).
 ```
 $ nano ~/.bashrc
 ```
@@ -70,7 +70,7 @@ export ROS_HOSTNAME=${IP_ADDRESS_OF_TURTLEBOT3}
 ```
 $ source ~/.bashrc
 ```
-3. Run TurtleBot basic packages
+3. Run TurtleBot basic packages.
 ```
 $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
@@ -133,7 +133,7 @@ $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 $ roscore
 ```
-2. Launch `turtlebot3_teleop_key`
+2. Launch `turtlebot3_teleop_key`.
 ```
 $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
@@ -153,7 +153,7 @@ CTRL-C to quit
 
 ### Clone the repo
 
-1. In your vm, switch the directory to `catkin_ws/src`
+1. In your vm, switch the directory to `catkin_ws/src`.
 ```
 $ cd ~/catkin_ws/src
 ```
@@ -161,15 +161,15 @@ $ cd ~/catkin_ws/src
 ```
 $ git clone https://github.com/popshia/cycu_turtlebot3
 ```
-3. `cd` into the python file directory.
+3. `cd` into the scripts file directory.
 ```
 $ cd cycu_turtlebot3/scripts
 ```
-4. Make three scripts executable with `chmod`
+4. Make three scripts executable with `chmod`.
 ```
 $ chmod +x topic.py server.py client.py
 ```
-### Topic scripts
+### Topic scripts (vm)
 
 1. Look into the topic script file and call each function in main with your parameters.
 ```
@@ -180,30 +180,51 @@ $ nano topic.py
 $ cd ~/catkin_ws
 $ catkin_make
 ```
-3. `rosrun` the package with the script and check the result.
+3. Source the `setup.bash` file.
+```
+$ source ~/catkin_es/devel/setup.bash
+```
+4. `rosrun` the package with the script and check the result.
 ```
 $ rosrun cycu_turtlebot3 topic.py
 ```
-### Service scripts
+### Service scripts (vm and TurtleBot3)
 
-1. Go back to the script directory.
+1. Open another terminal and ssh to your TurtleBot3.
 ```
-$ cd ~/catkin_ws/src/cycu_turtlebot3/scripts
+ssh pi@{IP_ADDRESS_OF_TURTLEBOT3}
 ```
-2. Look into the server and client script file and figure out how the scripts work.
+2. Change directory to catkin's `src` folder.
 ```
-$ nano server.py
-$ nano client.py
+cd ~/catkin_ws/src
 ```
-3. After saving the script file, `catkin_make` the script.
+3. Clone another copy of the repo.
+```
+$ git clone https://github.com/popshia/cycu_turtlebot3
+```
+4. `cd` into the scripts file directory.
+```
+$ cd cycu_turtlebot3/scripts
+```
+5. Make three scripts executable with `chmod`.
+```
+$ chmod +x topic.py server.py client.py
+```
+6. Go back to the `catkin_ws` root folder and `catkin_make` the package.
 ```
 $ cd ~/catkin_ws
-$ catkin_make
+$ catkin_make --only-pkg-with-deps cycu_turtlebot3
 ```
-4. Open two terminal windows and `rosrun` the package with both scripts and check the result.
+7. Source the `setup.bash` file.
+```
+$ source ~/catkin_es/devel/setup.bash
+```
+4. `rosrun` `server.py` on TurtleBot3 and `client.py` on your vm.
+
+> I've experience some package not found issues during the testing, if you can find `cycu_turtlebot3` package using `rospack list` but can't run the package using `rosrun`, I suggest you do a reboot on TurtleBot3 using `sudo reboot`, after reboot, don't forget to run the basic package using the command in step 3 of the TurtleBot3 section above.
 
 > Check the usage of `client.py` first using `rosrun cycu_turtlebot3 client.py -h` 
 ```
-$ rosrun cycu_turtlebot3 server.py
-$ rosrun cycu_turtlebot3 client.py
+$ rosrun cycu_turtlebot3 server.py   # on TurtleBot3
+$ rosrun cycu_turtlebot3 client.py   # on your vm
 ```
