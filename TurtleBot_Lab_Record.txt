@@ -1,0 +1,50 @@
+0. 助教上課前電池要先充電( 修課人數兩倍 )
+
+   ############# TurtleBot基本連線操作 #############
+1. TurtleBot插電池
+2. 看TurtleBot編號
+3. TurtleBot開開關 -> lidar會開始轉
+4. 回到你的主機
+5. 連到ROS_5G ( password:123123123 )
+6. ssh至TurtleBot -> ssh pi@{$your_turtlebot_IP}
+7. 輸入 "yes"
+8. 輸入 password ( password:turtlebot )
+9. 關turtlebot( 在ssh到turtlebot的terminal ) -> sudo poweroff
+
+   ############# 回到VM端( 假設已經裝好所有套件了 ）#############
+1. if ( 沒有裝套件 ) {
+     去readme裝套件
+   } // if 
+
+   else jump to step 2.
+
+2. 現在要改VM跟turtlebot .bashrc中的IP, 重新設定兩端的hostname跟master_url
+   有圖解釋會更好
+3. echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+4. 改.bashrc中的IP
+5. source ~/.bashrc 一下
+
+   ############# 回到turtlebot端 #############
+1. ssh到turtlebot
+2. 改.bashrc中的IP
+3. source ~/.bashrc 一下
+4. TurtleBot端run roslaunch
+
+   ############# 回到VM端( Run turtlebot default pkg ) #############
+1. Run rescore
+2. Run turtlebot3_teleop_key
+3. w a s d x 去操作 ( source code: https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_teleop/nodes/turtlebot3_teleop_key )
+
+   ############# 回到VM端( Run cycu_turtlebot pkg ) #############
+1. cd到catkin_ws
+2. git clone 助教repo
+3. cd cycu_turtlebot3/scripts
+4. 把scripts files改成executable -> chmod +x *.py 
+5. 改topic.py設定走直線時間( 原理是一段時間內不停publish一個指令,turtlebot才會一直動作 )
+6. 把老大任務玩出來
+
+
+
+
+
+ 
