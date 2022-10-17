@@ -182,7 +182,7 @@ $ catkin_make
 ```
 3. Source the `setup.bash` file.
 ```
-$ source ~/catkin_es/devel/setup.bash
+$ source ~/catkin_ws/devel/setup.bash
 ```
 4. `rosrun` the package with the script and check the result.
 ```
@@ -217,7 +217,7 @@ $ catkin_make --only-pkg-with-deps cycu_turtlebot3
 ```
 7. Source the `setup.bash` file.
 ```
-$ source ~/catkin_es/devel/setup.bash
+$ source ~/catkin_ws/devel/setup.bash
 ```
 4. `rosrun` `server.py` on TurtleBot3 and `client.py` on your vm.
 
