@@ -95,12 +95,17 @@ if __name__ == "__main__":
     print(msg)
 
     try:
+        start_time = rospy.Time.now()
+
         while not rospy.is_shutdown():
-            # here are some examples
-            teleop.Set_Linear_Velocity(1.0)
+            current_time = rospy.Time.now()
+
+            if current_time - start_time < rospy.Duration(2):
+                # here are some examples
+                teleop.Set_Linear_Velocity(1.0)
             # use sleep as a timer to maintain the speed
-            time.sleep(5)
-            teleop.Reset_All_Velocity()
+            # time.sleep(5)
+            # teleop.Reset_All_Velocity()
 
     except:
         print(e)
