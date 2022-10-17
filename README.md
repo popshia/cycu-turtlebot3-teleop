@@ -36,7 +36,7 @@ $ nano ~/.bashrc
 
 > Modify the address of `MASTER_URL` to
 ```
-export ROS_MASTER_URL=http://${IP_ADDRESS_OF_YOUR_VM}:11311
+export ROS_MASTER_URI=http://${IP_ADDRESS_OF_YOUR_VM}:11311
 ```
 > Modify the address of `HOSTNAME`
 ```
@@ -60,7 +60,7 @@ $ nano ~/.bashrc
 
 > Modify the address of `MASTER_URL` to
 ```
-export ROS_MASTER_URL=http://${IP_ADDRESS_OF_YOUR_VM}:11311
+export ROS_MASTER_URI=http://${IP_ADDRESS_OF_YOUR_VM}:11311
 ```
 > Modify the address of `HOSTNAME`, check out the corresponding ip of your TurtleBot in the txt file `TurtleBot3_IP.txt` in the repo
 ```
