@@ -103,9 +103,8 @@ if __name__ == "__main__":
             if current_time - start_time < rospy.Duration(2):
                 # here are some examples
                 teleop.Set_Linear_Velocity(1.0)
-            # use sleep as a timer to maintain the speed
-            # time.sleep(5)
-            # teleop.Reset_All_Velocity()
+            else:
+                teleop.Reset_All_Velocity()
 
     except:
         print(e)
