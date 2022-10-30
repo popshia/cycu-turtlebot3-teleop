@@ -1,0 +1,11 @@
+1. Set up a 基地台on你的手機，並弄清楚此基地台的名稱與password.
+2. 使用 HDMI 連接線to connect a keyboard, a mouse and a screen to your raspberrypi in the Turtlebot.
+3. Turn on the turtlebot computer
+4. Log in (Acct : pi , without password ) to the turtlebot computer.
+5. Once you have logged in, click the wifi icon on the top-right corner
+6. In the pop-up window, find the 名稱 of your 基地台 and click (so as to WIFI-connect the turtulebot computer to your 基地台)
+7. Run a console window and use 'ifconfig' to check the IP of this turtlebot computer.
+8. On your PC, in your VM (i.e., Ubuntu-18.04), also WIFI-connect to your 基地台.
+9. Now you should be able to use ssh to connect to the turtlebot computer from your VM. (i.e., in your VM, key in 'ssh pi@IPofTheTurtlebotComputer' in a console window).
+10. Input yes
+11. Input password ( password: turtlebot )
