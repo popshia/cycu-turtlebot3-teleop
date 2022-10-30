@@ -46,6 +46,10 @@ export ROS_HOSTNAME=${IP_ADDRESS_OF_YOUR_VM}
 ```
 $ source ~/.bashrc
 ```
+3. Run `roscore` in your vm.
+```
+$ roscore
+```
 ## TurtleBot3
 
 1. Open another terminal and ssh to your TurtleBot3, the default password is `turtlebot`.
